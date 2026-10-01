@@ -17,7 +17,9 @@ export async function proxy(request: NextRequest) {
   if (!session) return AUTH_PAGES.includes(pathname) ? NextResponse.next() : to('/login');
 
   const home = ROLE_HOME[session.role];
-  if (pathname === '/' || AUTH_PAGES.includes(pathname)) return to(home);
+  // Auth pages stay reachable while signed in, so a suspended account can't loop.
+  if (pathname === '/') return to(home);
+  if (AUTH_PAGES.includes(pathname)) return NextResponse.next();
 
   const area = pathname.split('/')[1] as Role;
   if (AREAS.includes(area) && area !== session.role) return to(home);
