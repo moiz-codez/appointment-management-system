@@ -1,0 +1,19 @@
+// Applies drizzle/ migrations. Plain JS so it runs with `node` in production (no tsx needed).
+// Usage: npm run db:migrate   (uses DATABASE_URL, or the first CLI argument)
+import { drizzle } from 'drizzle-orm/postgres-js';
+import { migrate } from 'drizzle-orm/postgres-js/migrator';
+import postgres from 'postgres';
+
+const url = process.argv[2] ?? process.env.DATABASE_URL;
+if (!url) {
+  console.error('DATABASE_URL is not set');
+  process.exit(1);
+}
+
+const client = postgres(url, { max: 1 });
+try {
+  await migrate(drizzle(client), { migrationsFolder: 'drizzle' });
+  console.log('Migrations applied');
+} finally {
+  await client.end();
+}
