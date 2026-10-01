@@ -31,7 +31,7 @@ Time is the main constraint. In order:
 | ORM / migrations | Drizzle ORM + `drizzle-kit`, driver `postgres` (postgres.js) |
 | Auth | Hand-rolled: email + password (`bcryptjs`), session = signed JWT (`jose`) in an httpOnly cookie. No Auth.js, no third-party auth. |
 | Validation | Zod at every boundary (server actions, route handlers) |
-| UI | Tailwind CSS + shadcn/ui, `lucide-react` icons |
+| UI | Tailwind CSS + shadcn/ui, `lucide-react` icons (`next-themes` only because the shadcn toast imports it) |
 | Charts | Recharts |
 | Data fetching | Server Components for reads; Server Actions for mutations; SWR polling (`refreshInterval`) for live screens |
 | Background jobs | In-process timer started from `src/instrumentation.ts` (runs on a long-running Node server) + lazy expiry on read |
