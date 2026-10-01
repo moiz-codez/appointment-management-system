@@ -82,7 +82,7 @@ Before saying a task is done: `npm run lint`, `npm run typecheck`, `npm test`, a
 ├── tests/                         # vitest: services, transitions, concurrency, flow
 ├── docker-compose.yml             # local Postgres: dev DB + test DB
 └── src/
-    ├── middleware.ts              # redirects: not logged in → /login; wrong role → own home
+    ├── proxy.ts                   # (Next 16 name for middleware.ts) redirects: not logged in → /login; wrong role → own home
     ├── instrumentation.ts         # starts the job timer once on server start
     ├── app/
     │   ├── (auth)/login, register
