@@ -38,12 +38,18 @@ export default async function CustomerHome({ searchParams }: PageProps<'/custome
       {catalog.length === 0 ? (
         <Card>
           <CardHeader>
-            <CardTitle>No matches</CardTitle>
+            <CardTitle>{query ? 'No matches' : 'No services yet'}</CardTitle>
             <CardDescription>
-              Nothing matches &ldquo;{query}&rdquo;.{' '}
-              <Link href="/customer" className="font-medium text-primary underline-offset-4 hover:underline">
-                Show all services
-              </Link>
+              {query ? (
+                <>
+                  Nothing matches &ldquo;{query}&rdquo;.{' '}
+                  <Link href="/customer" className="font-medium text-primary underline-offset-4 hover:underline">
+                    Show all services
+                  </Link>
+                </>
+              ) : (
+                'No services are available right now. Please check back later.'
+              )}
             </CardDescription>
           </CardHeader>
         </Card>
