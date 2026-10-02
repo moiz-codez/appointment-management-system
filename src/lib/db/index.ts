@@ -1,14 +1,23 @@
-import { drizzle } from 'drizzle-orm/postgres-js';
+import { drizzle, type PostgresJsDatabase } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 import * as schema from './schema';
 
-const url = process.env.DATABASE_URL;
-if (!url) throw new Error('DATABASE_URL is not set');
+export type Db = PostgresJsDatabase<typeof schema>;
 
 // Reuse one connection pool across dev hot reloads.
-const globalForDb = globalThis as unknown as { pg?: ReturnType<typeof postgres> };
-const client = globalForDb.pg ?? postgres(url, { max: 10 });
-if (process.env.NODE_ENV !== 'production') globalForDb.pg = client;
+const globalForDb = globalThis as unknown as { db?: Db };
 
-export const db = drizzle(client, { schema });
-export type Db = typeof db;
+function connect(): Db {
+  if (globalForDb.db) return globalForDb.db;
+  const url = process.env.DATABASE_URL;
+  if (!url) throw new Error('DATABASE_URL is not set');
+  const instance = drizzle(postgres(url, { max: 10 }), { schema });
+  globalForDb.db = instance;
+  return instance;
+}
+
+// Connects on first use, not at import: `next build` imports route modules
+// without a database (Railway has no DATABASE_URL at build time).
+export const db = new Proxy({} as Db, {
+  get: (_, prop) => Reflect.get(connect(), prop),
+});
