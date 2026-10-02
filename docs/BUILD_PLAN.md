@@ -51,11 +51,11 @@ How to use this file:
 **Prompt:**
 > We are on Phase 2. Plan, wait for OK, then build.
 
-- [ ] Schema: `departments`, `services`, `counters`, `counterServices`, `slotConfigs`, `rules`, `activityLogs`
-- [ ] `lib/services/rules.ts` (`getRule` with defaults)
-- [ ] Seed: departments Examination, Student Affairs, Accounts; services Document Verification (`A`, 10 min), Document Collection (`B`, 5), Certificate Verification (`C`, 10), New Registration (`D`, 20), Fee Queries (`F`, 5); 2–3 counters per department mapped to services; staff accounts assigned to counters; working hours 9 AM–5 PM with a 1–2 PM break; slot configs
-- [ ] Customer `/customer`: departments → services, with a search box (§9). Each service shows **Book appointment** and **Get token** (wired up in Phases 3–4)
-- [ ] Tests: `getRule` override order
+- [x] Schema: `departments`, `services`, `counters`, `counterServices`, `slotConfigs`, `rules`, `activityLogs`
+- [x] `lib/services/rules.ts` (`getRule` with defaults)
+- [x] Seed: departments Examination, Student Affairs, Accounts; services Document Verification (`A`, 10 min), Document Collection (`B`, 5), Certificate Verification (`C`, 10), New Registration (`D`, 20), Fee Queries (`F`, 5); 2–3 counters per department mapped to services; staff accounts assigned to counters; working hours 9 AM–5 PM with a 1–2 PM break; slot configs
+- [x] Customer `/customer`: departments → services, with a search box (§9). Each service shows **Book appointment** and **Get token** (wired up in Phases 3–4)
+- [x] Tests: `getRule` override order
 
 **Done when:** on your phone, as the customer, you can browse every seeded department and service and filter by name.
 
