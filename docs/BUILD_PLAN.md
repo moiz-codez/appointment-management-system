@@ -12,17 +12,17 @@ How to use this file:
 
 ## Phase 0 — Setup (you, by hand)
 
-- [ ] Install Node.js 20 LTS or newer, Docker Desktop, Git, Claude Code.
-- [ ] Create the app in the repo root (empty folder or freshly cloned empty repo):
+- [x] Install Node.js 20 LTS or newer, Docker Desktop, Git, Claude Code.
+- [x] Create the app in the repo root (empty folder or freshly cloned empty repo):
   ```bash
   npx create-next-app@latest . --ts --tailwind --eslint --app --src-dir --import-alias "@/*" --use-npm
   npx shadcn@latest init
   ```
-- [ ] Put `CLAUDE.md` in the root and `docs/BRIEF.md` + `docs/BUILD_PLAN.md` in `docs/`.
-- [ ] Git identity: `git config --global user.name "Muhammad Moiz"` and `git config --global user.email "<your GitHub email>"`.
-- [ ] Commit this starting state to `main` and push. From now on Claude Code only works on `dev`.
+- [x] Put `CLAUDE.md` in the root and `docs/BRIEF.md` + `docs/BUILD_PLAN.md` in `docs/`.
+- [x] Git identity: `git config --global user.name "moiz-codez"` and `git config --global user.email "<your GitHub email>"`.
+- [x] Commit this starting state to `main` and push. From now on Claude Code only works on `dev`.
 - [ ] Optional: GitHub → Settings → Branches → protect `main` (require a PR).
-- [ ] Create a Railway account (you'll connect the repo in Phase 1).
+- [x] Create a Railway account (you'll connect the repo in Phase 1).
 
 ---
 
@@ -31,16 +31,16 @@ How to use this file:
 **Prompt:**
 > Read CLAUDE.md, docs/BRIEF.md and docs/BUILD_PLAN.md. We are on Phase 1. First run the git start-of-session steps (create `dev` if it doesn't exist). Then plan Phase 1 and wait for my OK before writing code.
 
-- [ ] `docker-compose.yml` (dev DB + test DB), `.env.example`, npm scripts (`db:*`, `typecheck`, `test`)
-- [ ] Drizzle setup: `lib/db/index.ts`, `drizzle.config.ts`, `users` table, first migration
-- [ ] `lib/time.ts`, `lib/errors.ts`, `ActionResult` + `run()` helper
-- [ ] Auth: `lib/auth/password.ts`, `session.ts` (jose cookie), `guards.ts` (`requireUser`, `requireRole`); register (customers only), login, logout actions
-- [ ] `middleware.ts`: not logged in → `/login`; wrong role → own home
-- [ ] `/login`, `/register`, and four placeholder homes (`/customer`, `/staff`, `/manager`, `/admin`) inside a simple `AppShell` (title, role, logout)
-- [ ] `lib/db/seed.ts` with demo accounts: `customer@demo.com`, `staff@demo.com`, `manager@demo.com`, `admin@demo.com`, all `Demo@1234`
-- [ ] `/api/health`
-- [ ] Vitest set up against the test DB; tests: login ok, wrong password, role guard
-- [ ] Deploy to Railway: Next.js service from the `dev` branch + Railway Postgres; build `npm run build`, start `npm run db:migrate && npm start`; set env vars; run the seed once
+- [x] `docker-compose.yml` (dev DB + test DB), `.env.example`, npm scripts (`db:*`, `typecheck`, `test`)
+- [x] Drizzle setup: `lib/db/index.ts`, `drizzle.config.ts`, `users` table, first migration
+- [x] `lib/time.ts`, `lib/errors.ts`, `ActionResult` + `run()` helper
+- [x] Auth: `lib/auth/password.ts`, `session.ts` (jose cookie), `guards.ts` (`requireUser`, `requireRole`); register (customers only), login, logout actions
+- [x] `middleware.ts`: not logged in → `/login`; wrong role → own home
+- [x] `/login`, `/register`, and four placeholder homes (`/customer`, `/staff`, `/manager`, `/admin`) inside a simple `AppShell` (title, role, logout)
+- [x] `lib/db/seed.ts` with demo accounts: `customer@demo.com`, `staff@demo.com`, `manager@demo.com`, `admin@demo.com`, all `Demo@1234`
+- [x] `/api/health`
+- [x] Vitest set up against the test DB; tests: login ok, wrong password, role guard
+- [x] Deploy to Railway: Next.js service from the `dev` branch + Railway Postgres; build `npm run build`, start `npm run db:migrate && npm start`; set env vars; run the seed once
 
 **Done when:** on the Railway URL, from your phone and laptop, each demo account logs in and lands on its own home; a customer typing `/admin` gets bounced; a wrong password shows a readable error.
 
