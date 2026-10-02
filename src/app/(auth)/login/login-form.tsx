@@ -28,13 +28,13 @@ export function LoginForm() {
     <form action={onSubmit} className="space-y-4">
       <div className="space-y-2">
         <Label htmlFor="email">Email</Label>
-        <Input id="email" name="email" type="email" autoComplete="email" required />
+        <Input className="h-10" id="email" name="email" type="email" autoComplete="email" required />
       </div>
       <div className="space-y-2">
         <Label htmlFor="password">Password</Label>
-        <Input id="password" name="password" type="password" autoComplete="current-password" required />
+        <Input className="h-10" id="password" name="password" type="password" autoComplete="current-password" required />
       </div>
-      <Button type="submit" className="w-full" disabled={pending}>
+      <Button type="submit" size="lg" className="h-10 w-full" disabled={pending}>
         {pending ? 'Signing in…' : 'Sign in'}
       </Button>
     </form>

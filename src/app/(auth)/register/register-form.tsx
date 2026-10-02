@@ -29,22 +29,22 @@ export function RegisterForm() {
     <form action={onSubmit} className="space-y-4">
       <div className="space-y-2">
         <Label htmlFor="name">Full name</Label>
-        <Input id="name" name="name" autoComplete="name" required minLength={2} />
+        <Input className="h-10" id="name" name="name" autoComplete="name" required minLength={2} />
       </div>
       <div className="space-y-2">
         <Label htmlFor="email">Email</Label>
-        <Input id="email" name="email" type="email" autoComplete="email" required />
+        <Input className="h-10" id="email" name="email" type="email" autoComplete="email" required />
       </div>
       <div className="space-y-2">
         <Label htmlFor="phone">Phone (optional)</Label>
-        <Input id="phone" name="phone" type="tel" autoComplete="tel" />
+        <Input className="h-10" id="phone" name="phone" type="tel" autoComplete="tel" />
       </div>
       <div className="space-y-2">
         <Label htmlFor="password">Password</Label>
-        <Input id="password" name="password" type="password" autoComplete="new-password" required minLength={8} />
+        <Input className="h-10" id="password" name="password" type="password" autoComplete="new-password" required minLength={8} />
         <p className="text-xs text-muted-foreground">At least 8 characters.</p>
       </div>
-      <Button type="submit" className="w-full" disabled={pending}>
+      <Button type="submit" size="lg" className="h-10 w-full" disabled={pending}>
         {pending ? 'Creating account…' : 'Create account'}
       </Button>
     </form>
