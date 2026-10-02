@@ -18,7 +18,7 @@ Time is the main constraint. In order:
 4. AI features, cheapest first.
 5. Nothing beyond the brief unless I ask.
 
-**The UI is deliberately plain:** shadcn/ui components with their default styling, no custom design system, no animations. The logic lives in `src/lib/services/`; pages just display data and call actions.
+**The UI is deliberately simple:** shadcn/ui components only, themed with one brand color (indigo, via the shadcn CSS variables in `globals.css`), no custom design system, no animations. The logic lives in `src/lib/services/`; pages just display data and call actions.
 
 ---
 
